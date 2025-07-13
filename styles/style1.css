@@ -449,3 +449,64 @@ footer::before {
         font-size: 1.5rem;
     }
 }
+
+/* Filtres */
+.filters {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: transparent;
+    color: var(--light);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--neon-glow);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    box-shadow: var(--neon-glow);
+}
+
+/* Animation pour le filtrage */
+.niveau-section {
+    transition: all 0.5s ease;
+}
+
+.niveau-section.hidden {
+    opacity: 0;
+    height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .filter-buttons {
+        gap: 8px;
+    }
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
