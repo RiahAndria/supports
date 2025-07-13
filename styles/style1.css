@@ -415,3 +415,37 @@ footer::before {
         padding: 20px;
     }
 }
+
+
+.niveau-section {
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.niveau-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+}
+
+.niveau-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: var(--text-shadow);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+@media (max-width: 768px) {
+    .niveau-title {
+        font-size: 1.5rem;
+    }
+}
