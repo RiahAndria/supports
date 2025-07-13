@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tout Support - Accueil</title>
+    <link rel="stylesheet" href="styles/style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Tout Support</div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <a href="index.html" class="active">Accueil</a>
+                <a href="cours.html">Téléchargement</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Récupérez les supports de cours ici</h1>
+                    <p class="hero-subtitle">Je vais mettre les supports de cours en ma disposition ici</p>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Contenu Disponible</h3>
+                    <p>J'ai pas encore fini de trier tous les support mais voilà ce qui est dispo pour le moment :</p>
+                    <ul class="subject-list">
+                        <li><i class="fas fa-code"></i> Programmation (JavaScript, C, Algorithmes)</li>
+                        <li><i class="fas fa-calculator"></i> Mathématiques et Statistiques</li>
+                        <li><i class="fas fa-server"></i> Systèmes d'exploitation (Windows, Unix)</li>
+                        <li><i class="fas fa-microchip"></i> Systèmes embarqués</li>
+                        <li><i class="fas fa-file-invoice-dollar"></i> Comptabilité</li>
+                    </ul>
+                </div>
+
+                <div class="warning-card">
+                    <div class="warning-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Important à lire</h3>
+                    <div class="warning-content">
+                        <p><strong>⚠ Site en développement :</strong> Je suis encore un gros débutant alors il manque des fonctionnalités, du contenu et tout mais je vais faire de mon mieux pour remplir le site plus tard.</p>
+                        <p><strong>⚠ Avertissement :</strong> SVP, ne signalez pas les liens dispo ici, je veux pas me faire ban mon compte google.</p>
+                        <p><strong>⚠ Avertissement :</strong> Tous les lien de téléchargements ici présents sont liés à Google Drive, alors il est recommandé d'avoir un compte Google.</p>
+                    </div>
+                </div>
+
+                <a href="cours.html" class="btn-access">
+                    <i class="fas fa-arrow-right"></i> Accéder aux supports
+                </a>
+            </section>
+        </main>
+
+        <footer>
+            <p>Made by Riah</p>
+        </footer>
+    </div>
+
+    <script>
+        // Menu Hamburger
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
