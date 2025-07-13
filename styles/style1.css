@@ -458,6 +458,9 @@ footer::before {
     backdrop-filter: blur(10px);
     border-radius: 15px;
     border: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .filter-buttons {
