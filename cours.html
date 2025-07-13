@@ -6,6 +6,7 @@
     <title>Tout Support - Téléchargement</title>
     <link rel="stylesheet" href="styles/style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="Scripts/filtre.js"></script>
 </head>
 <body>
     <div class="container">
@@ -23,7 +24,17 @@
         </header>
 
         <main>
-            <section class="niveau-section">
+            <section class="filters">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Tous les cours</button>
+                    <button class="filter-btn" data-filter="l1">Licence 1</button>
+                    <button class="filter-btn" data-filter="l2">Licence 2</button>
+                    <button class="filter-btn" data-filter="l3">Licence 3</button>
+                    <button class="filter-btn" data-filter="m1">Master 1</button>
+                    <button class="filter-btn" data-filter="m2">Master 2</button>
+                </div>
+            </section>
+            <section class="niveau-section l1">
                 <h2 class="niveau-title">Licence 1 (L1)</h2>
                 <div class="cours-grid">
                     <div class="cours-card">
@@ -138,33 +149,34 @@
                 </div>
             </section>
 
-            <section class="niveau-section">
+            <section class="niveau-section l2">
                 <h2 class="niveau-title">Licence 2 (L2)</h2>
                 <div class="cours-grid">
                     <p>Aucun support dispo pour le moment</p>
                 </div>
             </section>
 
-            <section class="niveau-section">
+            <section class="niveau-section l3">
                 <h2 class="niveau-title">Licence 3 (L3)</h2>
                 <div class="cours-grid">
                     <p>Aucun support dispo pour le moment</p>
                 </div>
             </section>
 
-            <section class="niveau-section">
+            <section class="niveau-section m1">
                 <h2 class="niveau-title">Master 1 (M1)</h2>
                 <div class="cours-grid">
                     <p>Aucun support dispo pour le moment</p>
                 </div>
             </section>
 
-            <section class="niveau-section">
+            <section class="niveau-section m2">
                 <h2 class="niveau-title">Master 2 (M2)</h2>
                 <div class="cours-grid">
                     <p>Aucun support dispo pour le moment</p>
                 </div>
             </section>
+
         </main>
 
         <footer>
