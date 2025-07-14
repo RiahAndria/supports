@@ -3,152 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tout Support - Téléchargement</title>
-    <link rel="stylesheet" href="styles/style1.css">
+    <title>Tout Support - Cours</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="Scripts/filtre.js"></script>
+    <link rel="stylesheet" href="styles/style1.css">
+    <style>
+    :root {
+        --primary: #06b6d4;
+        --secondary: #3b82f6;
+        --dark: #0f172a;
+        --darker: #020617;
+        --light: #f8fafc;
+        --glass: rgba(255, 255, 255, 0.15);
+        --glass-border: rgba(255, 255, 255, 0.2);
+        --neon-glow: 0 0 15px rgba(6, 182, 212, 0.6);
+        --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+        background: linear-gradient(135deg, var(--darker), var(--dark));
+        color: var(--light);
+        min-height: 100vh;
+        line-height: 1.6;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 0;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+
+    .logo {
+        font-size: 2.2rem;
+        font-weight: 800;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: var(--neon-glow);
+        letter-spacing: 1px;
+    }
+
+    /* Navigation */
+    nav a {
+        color: var(--light);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 30px;
+        transition: all 0.3s ease-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+    nav a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, var(--glass), transparent);
+        transition: 0.5s;
+    }
+
+    nav a.active {
+        color: var(--primary);
+        box-shadow: var(--neon-glow);
+    }
+
+    nav a:hover {
+        color: var(--primary);
+        box-shadow: var(--neon-glow);
+    }
+
+    nav a:hover::before {
+        left: 100%;
+    }
+
+    /* Cours Grid */
+    .cours-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .cours-card {
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--glass-border);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .cours-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), var(--neon-glow);
+    }
+
+    .cours-card.new::after {
+        content: "NOUVEAU";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: #ff4757;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .cours-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    .cours-info {
+        padding: 25px;
+    }
+
+    .cours-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+        font-weight: 700;
+        text-shadow: var(--text-shadow);
+    }
+
+    .btn-download {
+        color: var(--primary);
+        font-size: 20px;
+        float: right;
+        transition: all 0.3s;
+    }
+
+    .btn-download:hover {
+        transform: scale(1.1);
+        text-shadow: var(--neon-glow);
+    }
+
+    /* Niveau Sections */
+    .niveau-section {
+        margin-bottom: 60px;
+        position: relative;
+    }
+
+    .niveau-section::after {
+        content: '';
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+
+    .niveau-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: var(--text-shadow);
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--glass-border);
+    }
+
+    /* Filtres */
+    .filters {
+        margin-bottom: 30px;
+        padding: 20px;
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid var(--glass-border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .filter-btn {
+        padding: 10px 20px;
+        border-radius: 30px;
+        background: transparent;
+        color: var(--light);
+        border: 1px solid var(--glass-border);
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+    }
+
+    .filter-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: var(--neon-glow);
+    }
+
+    .filter-btn.active {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        box-shadow: var(--neon-glow);
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 30px;
+        margin-top: 80px;
+        position: relative;
+        color: var(--primary);
+        font-weight: 500;
+    }
+
+    footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+
+    /* Animations */
+    .niveau-section {
+        transition: all 0.5s ease;
+    }
+
+    .niveau-section.hidden {
+        opacity: 0;
+        height: 0;
+        margin-bottom: 0;
+        overflow: hidden;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .cours-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .niveau-title {
+            font-size: 1.5rem;
+        }
+        
+        .filter-buttons {
+            gap: 8px;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="logo">Tout Support</div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <h1>Tout Support</h1>
             <nav>
                 <a href="index.html">Accueil</a>
-                <a href="cours.html" class="active">Téléchargement</a>
+                <a href="cours.html" class="active">Cours</a>
             </nav>
         </header>
 
         <main>
             <section class="filters">
                 <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">Tous les cours</button>
-                    <button class="filter-btn" data-filter="l1">Licence 1</button>
-                    <button class="filter-btn" data-filter="l2">Licence 2</button>
-                    <button class="filter-btn" data-filter="l3">Licence 3</button>
-                    <button class="filter-btn" data-filter="m1">Master 1</button>
-                    <button class="filter-btn" data-filter="m2">Master 2</button>
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="nouveautes">Nouveautés</button>
+                    <button class="filter-btn" data-filter="l1">L1</button>
+                    <button class="filter-btn" data-filter="l2">L2</button>
+                    <button class="filter-btn" data-filter="l3">L3</button>
+                    <button class="filter-btn" data-filter="m1">M1</button>
+                    <button class="filter-btn" data-filter="m2">M2</button>
                 </div>
             </section>
-            
-            <div id="coursesContainer">
-                <!-- Le contenu sera généré dynamiquement par JavaScript -->
-            </div>
 
+            <div id="coursesContainer"></div>
         </main>
 
         <footer>
-            <p>Made by Riah</p>
+            <p>Made with ❤️ by Riah</p>
         </footer>
     </div>
 
     <script>
-        // Menu Hamburger
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            nav.classList.toggle('active');
-        });
-
-        // Chargement des cours depuis le JSON
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             fetch('cours.json')
                 .then(response => response.json())
                 .then(data => {
                     displayCourses(data);
-                    setupFilterButtons();
+                    setupFilters();
                 })
                 .catch(error => {
-                    console.error('Erreur lors du chargement du JSON:', error);
-                    // Afficher un message d'erreur ou un contenu par défaut
+                    console.error("Erreur de chargement :", error);
+                    document.getElementById('coursesContainer').innerHTML = 
+                        "<p>Impossible de charger les cours. Rechargez la page.</p>";
                 });
         });
 
-        function displayCourses(coursesData) {
+        function displayCourses(data) {
             const container = document.getElementById('coursesContainer');
             container.innerHTML = '';
 
-            for (const niveau in coursesData) {
-                const courses = coursesData[niveau];
-                if (courses.length === 0) continue;
+            // Section Nouveautés (6 cours les plus récents)
+            const nouveautes = getAllCourses(data)
+                .sort((a, b) => new Date(b.dateAjout) - new Date(a.dateAjout))
+                .slice(0, 6);
 
-                const section = document.createElement('section');
-                section.className = `niveau-section ${niveau}`;
-                
-                const title = document.createElement('h2');
-                title.className = 'niveau-title';
-                
-                // Déterminer le nom complet du niveau
-                let niveauName = '';
-                switch(niveau) {
-                    case 'l1': niveauName = 'Licence 1 (L1)'; break;
-                    case 'l2': niveauName = 'Licence 2 (L2)'; break;
-                    case 'l3': niveauName = 'Licence 3 (L3)'; break;
-                    case 'm1': niveauName = 'Master 1 (M1)'; break;
-                    case 'm2': niveauName = 'Master 2 (M2)'; break;
-                }
-                
-                title.textContent = niveauName;
-                section.appendChild(title);
-                
-                const grid = document.createElement('div');
-                grid.className = 'cours-grid';
-                
-                courses.forEach(course => {
-                    const card = document.createElement('div');
-                    card.className = 'cours-card';
-                    
-                    card.innerHTML = `
-                        <img src="${course.image}" alt="${course.titre}" class="cours-img">
-                        <div class="cours-info">
-                            <h3 class="cours-title">${course.titre}</h3>
-                            <a href="${course.lien}" class="btn-download"><i class="fa fa-download"></i></a>
-                        </div>
-                    `;
-                    
-                    grid.appendChild(card);
-                });
-                
-                section.appendChild(grid);
+            if (nouveautes.length > 0) {
+                const section = createSection('nouveautes', '🆕 Nouveautés', nouveautes, true);
                 container.appendChild(section);
+            }
+
+            // Sections par niveau
+            for (const niveau in data) {
+                if (niveau !== 'nouveautes' && data[niveau].length > 0) {
+                    const titre = getNiveauName(niveau);
+                    const section = createSection(niveau, titre, data[niveau]);
+                    container.appendChild(section);
+                }
             }
         }
 
-        function setupFilterButtons() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
+        function createSection(id, titre, courses, isNew = false) {
+            const section = document.createElement('section');
+            section.className = `niveau-section ${id}`;
+            section.innerHTML = `<h2>${titre}</h2><div class="cours-grid"></div>`;
             
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Retirer la classe active de tous les boutons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Ajouter la classe active au bouton cliqué
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    filterCourses(filter);
-                });
+            const grid = section.querySelector('.cours-grid');
+            courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'cours-card' + (isNew ? ' new' : '');
+                card.innerHTML = `
+                    <img src="${course.image}" alt="${course.titre}" class="cours-img">
+                    <div class="cours-info">
+                        <h3>${course.titre}</h3>
+                        <a href="${course.lien}" class="btn-download"><i class="fa fa-download"></i></a>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
+            
+            return section;
         }
 
-        function filterCourses(filter) {
-            const sections = document.querySelectorAll('.niveau-section');
-            
-            sections.forEach(section => {
-                if (filter === 'all') {
-                    section.style.display = 'block';
-                } else {
-                    if (section.classList.contains(filter)) {
-                        section.style.display = 'block';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                }
+        function getAllCourses(data) {
+            return Object.values(data).flat();
+        }
+
+        function getNiveauName(niveau) {
+            const noms = { l1: 'Licence 1', l2: 'Licence 2', l3: 'Licence 3', m1: 'Master 1', m2: 'Master 2' };
+            return noms[niveau] || niveau;
+        }
+
+        function setupFilters() {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('.niveau-section').forEach(section => {
+                        section.style.display = 
+                            (filter === 'all' || section.classList.contains(filter)) ? 'block' : 'none';
+                    });
+                });
             });
         }
     </script>
