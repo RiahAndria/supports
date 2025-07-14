@@ -89,10 +89,10 @@
             const container = document.getElementById('coursesContainer');
             container.innerHTML = '';
 
-            // Section Nouveautés (6 cours les plus récents)
+            // Section Nouveautés (3 cours les plus récents)
             const nouveautes = getAllCourses(data)
                 .sort((a, b) => new Date(b.dateAjout) - new Date(a.dateAjout))
-                .slice(0, 6);
+                .slice(0, 3);
 
             if (nouveautes.length > 0) {
                 const section = createSection('nouveautes', '🆕 Nouveautés', nouveautes, true);
