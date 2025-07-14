@@ -1,0 +1,78 @@
+{
+  "l1": [
+    {
+      "titre": "Algorithme et structure de données en C",
+      "image": "images/algositeweb.jpg",
+      "lien": "https://drive.google.com/drive/folders/1yPt-JfD9WkoF_qUIOL0wuKA1tYdxgIDP?usp=sharing"
+    },
+    {
+      "titre": "Langage C",
+      "image": "images/c.png",
+      "lien": "https://drive.google.com/drive/folders/1c1KaGqKA2aBYL_nbFZzCVgfAo21xjy04?usp=sharing"
+    },
+    {
+      "titre": "Mathématiques discrètes",
+      "image": "images/meth.png",
+      "lien": "https://drive.google.com/drive/folders/18oFHiYa7N06bdHLXb6BQXrcbj2VvDNWE?usp=sharing"
+    },
+    {
+      "titre": "Base d'algèbre 1",
+      "image": "images/maths.jpg",
+      "lien": "https://drive.google.com/drive/folders/11KWL0s-i0Dmk3eyS_5AfGnT78Rmaybtm?usp=sharing"
+    },
+    {
+      "titre": "Système d'exploitation Unix",
+      "image": "images/Unix-Administration.jpg",
+      "lien": "https://drive.google.com/drive/folders/1yl_k9JOaLNh27hqzRZPsOBfKyeoYW_XY?usp=sharing"
+    },
+    {
+      "titre": "Système d'exploitation Windows",
+      "image": "images/win.jpg",
+      "lien": "https://drive.google.com/drive/folders/18TJGu7NlCvvpxGEr3YBd79jwyESLlO9x?usp=sharing"
+    },
+    {
+      "titre": "Architecture des ordinateurs",
+      "image": "images/ard.jpg",
+      "lien": "https://drive.google.com/drive/folders/1aDatBRQducHEJlTXU6QEVHvbAFYifr6Z?usp=sharing"
+    },
+    {
+      "titre": "Base d'analyse 1",
+      "image": "images/algbr.jpg",
+      "lien": "https://drive.google.com/drive/folders/1DHx9YKiy4afwLKa4fe7BdsW0YdqF6X2V?usp=sharing"
+    },
+    {
+      "titre": "Français",
+      "image": "images/frs.png",
+      "lien": "https://drive.google.com/drive/folders/1WmkdIzUbK7K9c7Wf2qZQUeihYAWMAOE5?usp=sharing"
+    },
+    {
+      "titre": "Comptabilité générale",
+      "image": "images/compta.jpg",
+      "lien": "https://drive.google.com/drive/folders/1TzefCdYxoazQ8yowXqP4zZuBfacRVu_d?usp=sharing"
+    },
+    {
+      "titre": "Développement de site web en HTML/CSS",
+      "image": "images/JS.jpg",
+      "lien": "https://drive.google.com/drive/folders/1BhwW6G9MXLrz0vtle7jLUDQrdpzYOYZI?usp=sharing"
+    },
+    {
+      "titre": "Maintenance des systèmes informatiques",
+      "image": "images/MSI.avif",
+      "lien": "https://drive.google.com/drive/folders/1cSHxaow_tq0-ZfWgYWTamUrCjZsgiXkj?usp=sharing"
+    },
+    {
+      "titre": "Probabilité et Statistique",
+      "image": "images/stats.jpeg",
+      "lien": "https://drive.google.com/drive/folders/1kSeu19xcZ2WKtDxUz8T4kd8Tvuhz8P6J?usp=sharing"
+    },
+    {
+      "titre": "Archive Cours avant 2024",
+      "image": "images/drive.webp",
+      "lien": "https://drive.google.com/drive/folders/1T3qzuaHrmpkdbFQ_qcRx1AW12dR3BXse?usp=sharing"
+    }
+  ],
+  "l2": [],
+  "l3": [],
+  "m1": [],
+  "m2": []
+}
