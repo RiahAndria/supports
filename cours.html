@@ -409,5 +409,31 @@
             });
         }
     </script>
+    <script>
+    // Menu Hamburger
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+        
+        // Empêche le défilement lorsque le menu est ouvert
+        if (nav.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Fermer le menu lorsqu'on clique sur un lien
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+</script>
 </body>
 </html>
