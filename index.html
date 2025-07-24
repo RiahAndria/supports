@@ -13,8 +13,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Permet de cliquer à travers */
-            z-index: 100; /* Au-dessus du contenu */
+            pointer-events: none;
+            z-index: 100;
             overflow: hidden;
         }
 
@@ -22,7 +22,7 @@
             position: absolute;
             border-radius: 50%;
             cursor: pointer;
-            pointer-events: auto; /* Active le clic sur les bulles */
+            pointer-events: auto;
             animation: fall linear forwards;
             box-shadow: 0 0 10px currentColor;
         }
@@ -172,8 +172,6 @@
         </footer>
     </div>
 
-
-    <!-- Ajoute cette div pour le jeu (à la fin du body) -->
     <div id="bubble-game"></div>
     <div id="game-controls">
         <button id="start-game">
@@ -184,7 +182,6 @@
         <div>Score: <span id="score">0</span></div>
     </div>
 
-    <!-- Nouveau popup pour le score -->
     <div class="game-popup" id="score-popup">
         <h3>Game Over!</h3>
         <p>Ton score: <span id="final-score">0</span></p>
@@ -265,7 +262,7 @@
                     background: hsla(${hue}, 80%, 70%, 0.7);
                     left: ${Math.random() * 100}vw;
                     top: -${size}px;
-                    animation-duration: ${Math.random() * 3 + 2}s;
+                    animation-duration: ${Math.random() * 4 + 3}s;
                 `;
 
                 bubble.addEventListener('click', () => {
