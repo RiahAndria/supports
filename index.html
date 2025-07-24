@@ -13,8 +13,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 100;
+            pointer-events: none; /* Permet de cliquer à travers */
+            z-index: 100; /* Au-dessus du contenu */
             overflow: hidden;
         }
 
@@ -22,13 +22,13 @@
             position: absolute;
             border-radius: 50%;
             cursor: pointer;
-            pointer-events: auto;
+            pointer-events: auto; /* Active le clic sur les bulles */
             animation: fall linear forwards;
             box-shadow: 0 0 10px currentColor;
         }
 
         @keyframes fall {
-            to { transform: translateY(100vh); }
+            to { transform: translateY(calc(100vh + 200px)); }
         }
 
         #game-controls {
@@ -172,6 +172,8 @@
         </footer>
     </div>
 
+
+    <!-- Ajoute cette div pour le jeu (à la fin du body) -->
     <div id="bubble-game"></div>
     <div id="game-controls">
         <button id="start-game">
@@ -263,7 +265,7 @@
                     background: hsla(${hue}, 80%, 70%, 0.7);
                     left: ${Math.random() * 100}vw;
                     top: -${size}px;
-                    animation-duration: ${Math.random() * 5 + 5}s;
+                    animation-duration: ${Math.random() * 2 + 1}s;
                 `;
 
                 bubble.addEventListener('click', () => {
@@ -275,10 +277,11 @@
                 });
 
                 bubbleGame.appendChild(bubble);
-                setTimeout(() => bubble.remove(), 10000);
+                setTimeout(() => bubble.remove(), 5000);
             }
         });
 
+        // Script du menu hamburger
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
         menuToggle.addEventListener('click', () => {
