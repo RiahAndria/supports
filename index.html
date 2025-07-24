@@ -6,6 +6,100 @@
     <title>Tout Support - Accueil</title>
     <link rel="stylesheet" href="styles/style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        #bubble-game {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permet de cliquer à travers */
+            z-index: 100; /* Au-dessus du contenu */
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto; /* Active le clic sur les bulles */
+            animation: fall linear forwards;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+
+        #game-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 101;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        #game-controls button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #game-timer {
+            min-width: 50px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            #game-controls .game-text {
+                display: none;
+            }
+        }
+        .game-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 102;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .game-popup h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .game-popup button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            #game-controls .game-text {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -57,6 +151,15 @@
                         <p><strong>⚠ Avertissement :</strong> Tous les lien de téléchargements ici présents sont liés à Google Drive, alors il est recommandé d'avoir un compte Google.</p>
                     </div>
                 </div>
+                <div class="warning-card">
+                    <div class="warning-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Nouveauté</h3>
+                    <div class="warning-content">
+                        <p><strong>🆕 Jeu <i class="fas fa-gamepad"></i> :</strong> J'ai rajouté un mini jeu (test) sur le site. Clic sur le petit bouton en bas le page pour essayer.</p>
+                    </div>
+                </div>
 
                 <a href="cours.html" class="btn-access">
                     <i class="fas fa-arrow-right"></i> Accéder aux supports
@@ -69,11 +172,118 @@
         </footer>
     </div>
 
+
+    <!-- Ajoute cette div pour le jeu (à la fin du body) -->
+    <div id="bubble-game"></div>
+    <div id="game-controls">
+        <button id="start-game">
+            <i class="fas fa-gamepad"></i>
+            <span class="game-text">Bubble Game</span>
+        </button>
+        <div id="game-timer">30s</div>
+        <div>Score: <span id="score">0</span></div>
+    </div>
+
+    <!-- Nouveau popup pour le score -->
+    <div class="game-popup" id="score-popup">
+        <h3>Game Over!</h3>
+        <p>Ton score: <span id="final-score">0</span></p>
+        <button id="close-popup">Fermer</button>
+    </div>
+
     <script>
-        // Menu Hamburger
+        document.addEventListener('DOMContentLoaded', () => {
+            const bubbleGame = document.getElementById('bubble-game');
+            const startButton = document.getElementById('start-game');
+            const scoreDisplay = document.getElementById('score');
+            const timerDisplay = document.getElementById('game-timer');
+            const scorePopup = document.getElementById('score-popup');
+            const finalScoreDisplay = document.getElementById('final-score');
+            const closePopupBtn = document.getElementById('close-popup');
+            
+            let score = 0;
+            let gameInterval;
+            let timerInterval;
+            let isPlaying = false;
+            let timeLeft = 30;
+
+            startButton.addEventListener('click', () => {
+                if (isPlaying) {
+                    stopGame();
+                } else {
+                    startGame();
+                }
+            });
+
+            closePopupBtn.addEventListener('click', () => {
+                scorePopup.style.display = 'none';
+            });
+
+            function startGame() {
+                isPlaying = true;
+                score = 0;
+                timeLeft = 30;
+                scoreDisplay.textContent = score;
+                timerDisplay.textContent = `${timeLeft}s`;
+                bubbleGame.innerHTML = '';
+                
+                gameInterval = setInterval(createBubble, 800);
+                
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    timerDisplay.textContent = `${timeLeft}s`;
+                    
+                    if (timeLeft <= 0) {
+                        stopGame();
+                        showScorePopup();
+                    }
+                }, 1000);
+            }
+
+            function stopGame() {
+                isPlaying = false;
+                clearInterval(gameInterval);
+                clearInterval(timerInterval);
+                bubbleGame.innerHTML = '';
+                timerDisplay.textContent = '30s';
+            }
+
+            function showScorePopup() {
+                finalScoreDisplay.textContent = score;
+                scorePopup.style.display = 'block';
+            }
+
+            function createBubble() {
+                const bubble = document.createElement('div');
+                const size = Math.random() * 50 + 30;
+                const hue = Math.floor(Math.random() * 360);
+                
+                bubble.className = 'bubble';
+                bubble.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: hsla(${hue}, 80%, 70%, 0.7);
+                    left: ${Math.random() * 100}vw;
+                    top: -${size}px;
+                    animation-duration: ${Math.random() * 5 + 5}s;
+                `;
+
+                bubble.addEventListener('click', () => {
+                    score += Math.floor(100 / size * 10);
+                    scoreDisplay.textContent = score;
+                    bubble.style.transform = 'scale(1.2)';
+                    bubble.style.opacity = '0';
+                    setTimeout(() => bubble.remove(), 300);
+                });
+
+                bubbleGame.appendChild(bubble);
+                setTimeout(() => bubble.remove(), 10000);
+            }
+        });
+
+        // Script du menu hamburger
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
-
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             nav.classList.toggle('active');
